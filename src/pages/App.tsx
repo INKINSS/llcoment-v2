@@ -2,7 +2,7 @@ import MainBanner from "../components/banners/MainBanner";
 
 const App = () => {
   return (
-    <div>
+    <div className="flex justify-center">
       <MainBanner />
     </div>
   );

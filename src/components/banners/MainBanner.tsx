@@ -13,8 +13,8 @@ const MainBanner = () => {
           tus propios artículos con la comunidad
         </p>
         <div className="flex gap-2 mt-4 justify-center">
-          <PrimaryButton title="Explorar" />
-          <PrimaryButton title="Comienza ahora" />
+          <PrimaryButton href="/explore" title="Explorar" />
+          <PrimaryButton href="/publish" title="Comienza ahora" />
         </div>
       </BlurFade>
     </section>

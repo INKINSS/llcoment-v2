@@ -1,7 +1,11 @@
 import { Editor as EditorTinymce } from "@tinymce/tinymce-react";
 import { useRef, useEffect, useState } from "react";
 
-const EditorText = () => {
+interface EditorTextProps {
+  setContent: (content: string) => void;
+}
+
+const EditorText = ({ setContent }: EditorTextProps) => {
   const editorRef = useRef(null);
   const [fontSize, setFontSize] = useState("16px");
 
@@ -22,6 +26,7 @@ const EditorText = () => {
     <EditorTinymce
       apiKey="c5m6s770dt0gpi1kbgy92cyom8f5qhhqkfyfqns6hzaskaqd"
       onInit={(_evt, editor) => (editorRef.current = editor)}
+      onEditorChange={(content) => setContent(content)}
       init={{
         height: 300,
         menubar: false,

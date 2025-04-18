@@ -1,6 +1,7 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import { PublishButton } from "../buttons/PublishButton";
 import { Button } from "../ui/button";
+import axios from "axios";
 import {
   Dialog,
   DialogContent,
@@ -12,14 +13,33 @@ import {
 } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { useState } from "react";
 
-export function FormDialog() {
+interface Props {
+  contentEditor: string;
+}
+
+export function FormDialog({contentEditor,}: Props) {
+
+  const [nickname, setNickname] = useState<string>('')
+  const [tag, setTag] = useState<string>('')
+
+  const hanleSubmit = async () => {
+    try {
+      await axios.post("http://localhost:3000/api/article", {
+        nickname: nickname,
+        tag: tag,
+        content: contentEditor,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          className="text-[1.1rem] px-10 py-2 font-normal bg-secondary-foreground text-white h-12"
-        >
+        <Button className="text-[1.1rem] px-10 py-2 font-normal bg-secondary-foreground text-white h-12">
           Publicar
         </Button>
       </DialogTrigger>
@@ -38,14 +58,15 @@ export function FormDialog() {
             <Label htmlFor="name" className="text-right">
               Nickname
             </Label>
-            <Input id="name" className="col-span-3" placeholder="ej: @samito" />
+            <Input id="nickname" onChange={(e) => setNickname(e.target.value)} className="col-span-3" placeholder="ej: @samito" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
+            <Label htmlFor="tag" className="text-right">
               Tag
             </Label>
             <Input
-              id="username"
+              onChange={(e) => setTag(e.target.value)}
+              id="tag"
               className="col-span-3"
               placeholder="ej: node.js"
             />
@@ -58,9 +79,10 @@ export function FormDialog() {
             </Button>
           </DialogClose>
           <PublishButton
-            onClick={() => console.log("hola")}
+            onClick={hanleSubmit}
             defaultContent="Publicar"
             onClickContent="Publicado"
+
           />
         </DialogFooter>
       </DialogContent>

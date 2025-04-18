@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { FormDialog } from "../components/dialogs/FormDialog";
 import EditorText from "../components/editor/EditorText";
 import { BlurFade } from "../components/magicui/blur-fade";
 
 const Publish = () => {
+  const [ contentEditor, setContentEditor ] = useState<string>('')
+
   return (
     <main>
       <BlurFade className="flex flex-col items-center">
@@ -14,9 +17,9 @@ const Publish = () => {
           ciencia, diseño, programación y más. Tu experiencia puede ayudar a
           alguien más
         </p>
-        <EditorText />
+        <EditorText setContent={setContentEditor} />
         <div className="mt-5">
-          <FormDialog />
+          <FormDialog contentEditor={contentEditor} />
         </div>
       </BlurFade>
     </main>

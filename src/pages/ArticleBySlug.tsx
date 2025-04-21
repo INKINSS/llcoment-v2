@@ -32,7 +32,7 @@ const ArticleBySlug = () => {
   return (
     <main>
         <h2>{article.title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: article.content }} ></div>
+        <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: article.content }} ></div>
     </main>
   );
 };

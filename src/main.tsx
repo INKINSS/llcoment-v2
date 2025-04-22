@@ -5,6 +5,8 @@ import "./index.css";
 import App from "./pages/App.tsx";
 import LayoutMain from "./layouts/LayoutMain.tsx";
 import Publish from "./pages/Publish.tsx";
+import ArticleBySlug from "./pages/ArticleBySlug.tsx";
+import Explore from "./pages/Explore.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -13,6 +15,8 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<LayoutMain />}>
           <Route index element={<App />} />
           <Route path="/publish" element={<Publish />} />
+          <Route path="/article/:slug" element={<ArticleBySlug />} />
+          <Route path="/articles" element={<Explore />} />
         </Route>
       </Routes>
     </StrictMode>

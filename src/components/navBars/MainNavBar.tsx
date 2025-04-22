@@ -5,7 +5,7 @@ const MainNavBar = () => {
   const links = [
     { id: 1, title: "inicio", href: "/" },
     { id: 2, title: "publicar", href: "/publish" },
-    { id: 3, title: "explorar", href: "/explore" },
+    { id: 3, title: "explorar", href: "/articles" },
   ];
 
   return (

@@ -2,6 +2,7 @@
 import { DialogClose } from "@radix-ui/react-dialog";
 import { PublishButton } from "../buttons/PublishButton";
 import { Button } from "../ui/button";
+import { Navigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -97,6 +98,7 @@ export function FormDialog({ contentEditor }: Props) {
             defaultContent="Publicar"
             onClickContent={isSuccess ? "Publicado!" : "Publicando..."}
           />
+          {isSuccess && <Navigate to="/" />}
         </DialogFooter>
       </DialogContent>
     </Dialog>
